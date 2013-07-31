@@ -1,0 +1,23 @@
+<h1>All workers</h1>
+<ul class="list-group" data-ng-repeat="person in personList">
+  <span class="badge">{{person.availableCount}}</span>
+  <li class="list-group-item">{{person.name}}</li>  
+</ul>
+
+<div id="details" data-ng-show="selectedPerson">
+<img data-ng-src="{{selectedPerson.picture}}">
+
+<div class="details">
+  Department: {{selectedPerson.department}} <br>
+  Job: {{selectedPerson.job}}
+</div>
+
+<h2>Availablility</h2> 
+<div class="details">
+  Is available to work from:
+  <ul data-ng-repeat="date in selectedPerson.availability">
+    <li>{{date}}</li>
+  </ul>
+</div>
+  
+</div>
