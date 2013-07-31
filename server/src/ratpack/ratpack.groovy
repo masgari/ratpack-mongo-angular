@@ -18,7 +18,7 @@ DBCollection personCollection = db.getCollection("person")
 ratpack {
     handlers {
         // validation method to make sure we can connect to our DB
-        get("collections") {
+        get("api/collections") {
             response.send "Available database collections are ${db.getCollectionNames().join(', ')}"
         }
 
