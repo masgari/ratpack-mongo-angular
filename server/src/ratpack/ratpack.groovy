@@ -81,7 +81,6 @@ ratpack {
           GridFSDBFile image = imageStore.findOne(pathTokens.filename)
           if( image ){
             byte[] imageBytes = IOUtils.toByteArray(image.inputStream)
-            println image.contentType
             response.send image.contentType, Unpooled.wrappedBuffer(imageBytes)            
           } else {
             clientError 404
