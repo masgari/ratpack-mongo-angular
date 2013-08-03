@@ -3,23 +3,35 @@
 angular.module('initApp')
   .controller('PersonCtrl', function ($scope) {
     $scope.personList = [
-      {name:'Thor', availabilityCount: 9},
-      {name:'Captain America', availabilityCount: 8},
-      {name:'Black Widow', availabilityCount: 7},
-      {name:'Hawkeye', availabilityCount: 6},
-      {name:'Hulk', availabilityCount: 5},
-      {name:'Ant Man', availabilityCount: 5}
+      {name:'Thor', image:''},
+      {name:'Captain America', image:''},
+      {name:'Black Widow', image:''},
+      {name:'Hawkeye', image:''},
+      {name:'Hulk', image:''},
+      {name:'Ant Man', image:''}
     ];
     
     $scope.selectedPerson = {
       picture : "http://static.comicvine.com/uploads/original/11/117763/2786642-tumblr_mg2iesn3go1qiknbco1_1280.jpg",
       name : "Thor",
-      department : "Avengers",
-      job : "God of Thunder",
-      availability : [
-         'jan 2, 2014',
-         'may 4, 2014'
+      properties : {
+        department : "Avengers",
+        job : "God of Thunder",
+        sex: 'male',
+        origin: 'Asgard',
+        dislikes: 'loki'
+      },
+      questions:[{
+        q:'Favorite Movie?',
+        a:'Avengers Assemble'
+      },{
+        q:'Favorite Tool',
+        a:'Hammer'
+      },{
+        q:'Last great holiday',
+        a:'not Florida'
+      }
       ]
     }
     
-  });
+});
