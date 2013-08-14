@@ -1,4 +1,4 @@
-// Generated on 2013-07-30 using generator-angular 0.3.1
+// Generated on 2013-08-14 using generator-angular 0.3.1
 'use strict';
 var LIVERELOAD_PORT = 35729;
 var lrSnippet = require('connect-livereload')({ port: LIVERELOAD_PORT });
@@ -19,7 +19,7 @@ module.exports = function (grunt) {
   // configurable paths
   var yeomanConfig = {
     app: 'app',
-    dist: '../server/src/ratpack/public'
+    dist: 'dist'
   };
 
   try {
@@ -37,10 +37,6 @@ module.exports = function (grunt) {
         files: ['test/spec/{,*/}*.coffee'],
         tasks: ['coffee:test']
       },
-      compass: {
-        files: ['<%= yeoman.app %>/styles/{,*/}*.{scss,sass}'],
-        tasks: ['compass:server']
-      },
       livereload: {
         options: {
           livereload: LIVERELOAD_PORT
@@ -55,9 +51,9 @@ module.exports = function (grunt) {
     },
     connect: {
       options: {
-        port: 8080,
+        port: 9000,
         // Change this to '0.0.0.0' to access the server from outside.
-        hostname: '0.0.0.0'
+        hostname: 'localhost'
       },
       livereload: {
         options: {
@@ -135,27 +131,6 @@ module.exports = function (grunt) {
           dest: '.tmp/spec',
           ext: '.js'
         }]
-      }
-    },
-    compass: {
-      options: {
-        sassDir: '<%= yeoman.app %>/styles',
-        cssDir: '.tmp/styles',
-        generatedImagesDir: '.tmp/images/generated',
-        imagesDir: '<%= yeoman.app %>/images',
-        javascriptsDir: '<%= yeoman.app %>/scripts',
-        fontsDir: '<%= yeoman.app %>/styles/fonts',
-        importPath: '<%= yeoman.app %>/bower_components',
-        httpImagesPath: '/images',
-        httpGeneratedImagesPath: '/images/generated',
-        httpFontsPath: '/styles/fonts',
-        relativeAssets: false
-      },
-      dist: {},
-      server: {
-        options: {
-          debugInfo: true
-        }
       }
     },
     // not used since Uglify task does concat,
@@ -269,16 +244,13 @@ module.exports = function (grunt) {
     },
     concurrent: {
       server: [
-        'coffee:dist',
-        'compass:server'
+        'coffee:dist'
       ],
       test: [
-        'coffee',
-        'compass'
+        'coffee'
       ],
       dist: [
         'coffee',
-        'compass:dist',
         'imagemin',
         'svgmin',
         'htmlmin'
