@@ -30,6 +30,17 @@ run {
     systemProperty "ratpack.reloadable", "true"
 }
 
+task myApp(type:Copy) {
+ from '../client/app'
+ into 'build/install/server/app/public'
+}
+
+myApp.dependsOn {
+    tasks.findAll { task -> task.name.startsWith('installApp') }
+}
+
+
+
 task wrapper(type: Wrapper) {
-    gradleVersion = "1.6"
+    gradleVersion = "1.10-rc-2"
 }

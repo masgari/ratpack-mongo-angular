@@ -1,7 +1,8 @@
 import com.tomaslin.mongopack.MongoModule
 import com.tomaslin.mongopack.MongoService
 
-import static org.ratpackframework.groovy.RatpackScript.ratpack
+//import static org.ratpackframework.groovy.RatpackScript.ratpack
+import static ratpack.groovy.Groovy.*
 
 def indexPages = ["index.html"] as String[]
 
@@ -16,7 +17,7 @@ ratpack {
         prefix('api') {
 
             // validation method to make sure we can connect to our DB
-            get('collections') {
+            get('cols') {
                 def collections = mongoService.collections()
                 response.send "Available database collections are $collections"
             }
@@ -44,6 +45,11 @@ ratpack {
                     }
                 }
 
+            }
+            prefix('images') {
+                get {
+                    response.send 'application/json', mongoService.find('images.files', '{}', '{"filename":1, "_id":1}')
+                }
             }
 
             prefix('image') {
